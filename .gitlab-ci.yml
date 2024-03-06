@@ -17,7 +17,6 @@ build:
   services:
     - docker:19.03.12-dind
   script:
-    - pip install --no-binary uvloop --no-binary httptools -r requirements.txt
     - docker build -t registry.gitlab.com/pfe20243/fast-api-test-project .
     - docker push registry.gitlab.com/pfe20243/fast-api-test-project
   tags:
