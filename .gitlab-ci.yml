@@ -11,19 +11,14 @@ services:
   - name: postgres:12.1-alpine
     alias: db
 
-test:
-  stage: test
-  image: python:3.8.1-alpine
-  before_script:
-    - pip install -r requirements.txt || true
-  script:
-    - pytest
-
 build:
   stage: build
   image: docker:19.03.12
   services:
     - docker:19.03.12-dind
   script:
+    - pip install --no-binary uvloop --no-binary httptools -r requirements.txt
     - docker build -t registry.gitlab.com/pfe20243/fast-api-test-project .
     - docker push registry.gitlab.com/pfe20243/fast-api-test-project
+  tags:
+    - docker-runner
