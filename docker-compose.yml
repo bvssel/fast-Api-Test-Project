@@ -7,6 +7,6 @@ services:
     volumes:
       - ./:/src/
     ports:
-      - 8005:8000
+      - 8082:8000
     # environment:
     #   - DATABASE_URL=postgresql://fastapi:fastapi@db/fastapi
