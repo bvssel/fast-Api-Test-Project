@@ -3,10 +3,10 @@ version: "3.7"
 services:
   app:
     build: .
-    container_name: myfastapiapp
+    container_name: app
     volumes:
       - ./:/src/
     ports:
-      - 8002:8000
+      - 8005:8000
     # environment:
     #   - DATABASE_URL=postgresql://fastapi:fastapi@db/fastapi
