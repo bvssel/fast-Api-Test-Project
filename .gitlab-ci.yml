@@ -1,15 +1,6 @@
 stages:
-  - test
   - build
-
-variables:
-  POSTGRES_DB: fastapi
-  POSTGRES_USER: fastapi
-  POSTGRES_PASSWORD: fastapi
-
-services:
-  - name: postgres:12.1-alpine
-    alias: db
+  - deploy
 
 build:
   stage: build
@@ -21,5 +12,15 @@ build:
   script:
     - docker build -t registry.gitlab.com/pfe20243/fast-api-test-project .
     - docker push registry.gitlab.com/pfe20243/fast-api-test-project
+  tags:
+    - docker-runner
+
+deploy:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker-compose up -d
   tags:
     - docker-runner
