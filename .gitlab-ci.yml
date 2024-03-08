@@ -9,6 +9,7 @@ build:
     - docker:19.03.12-dind
   before_script:
     - docker login -u bvssel -p glpat-k_wnu8uVfGwF8VGGPX6y registry.gitlab.com
+    - export PYTHONPATH=/src
   script:
     - docker build -t registry.gitlab.com/pfe20243/fast-api-test-project .
     - docker push registry.gitlab.com/pfe20243/fast-api-test-project
