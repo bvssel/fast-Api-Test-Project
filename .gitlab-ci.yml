@@ -15,7 +15,6 @@ build:
     - docker push registry.gitlab.com/pfe20243/fast-api-test-project
     - echo "Directory structure:"
     - ls -la
-    - echo "Python path:"
     - echo $PYTHONPATH
   tags:
     - docker-runner
@@ -27,6 +26,8 @@ deploy:
     - docker:dind
   before_script:
     - docker-compose down
+    - echo "helloooooooooooooooooo"
+    - docker-compose run --rm app ls /src
   script:
     - docker-compose up -d
   tags:
