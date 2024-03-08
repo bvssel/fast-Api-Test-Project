@@ -28,7 +28,7 @@ deploy:
     - docker-compose down
     # - echo "helloooooooooooooooooo"
   script:
-    - docker run -d --name fast-api-container -p 80:80 registry.gitlab.com/pfe20243/fast-api-test-project
+    - docker run -d --name fast-api-container -p 8005:80 registry.gitlab.com/pfe20243/fast-api-test-project
   tags:
     - docker-runner
 
