@@ -21,8 +21,8 @@ deploy:
   services:
     - docker:dind
   before_script:
-    - docker-compose down
+    - docker login -u bvssel -p glpat-k_wnu8uVfGwF8VGGPX6y registry.gitlab.com
   script:
-    - docker-compose up -d
+    - docker-compose -f docker-compose.yml up -d
   tags:
     - docker-runner
