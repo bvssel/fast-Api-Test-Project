@@ -1,34 +1,45 @@
 stages:
-  - build
-  - deploy
+  - test
 
-variables:
-  PROJECT_NAME: "pfe20243"
-  IMAGE_NAME: "fast-api-test-project"
-  DOCKER_TAG: "latest"
-
-build:
-  stage: build
-  image: docker:19.03.12
-  services:
-    - docker:19.03.12-dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+test:
+  stage: test
   script:
-    - docker build -t "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG" .
-    - docker push "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG"
+    - echo "Testing SSH connection"
+    - ssh root@192.168.1.131 "echo 'SSH connection successful'"
   tags:
-    - docker-runner
+    - ssh-runner
 
-deploy:
-  stage: deploy
-  image: docker:latest
-  services:
-    - docker:dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-    - docker-compose -f docker-compose.yml down
-  script:
-    - docker-compose -f docker-compose.yml up -d
-  tags:
-    - docker-runner
+# stages:
+#   - build
+#   - deploy
+
+# variables:
+#   PROJECT_NAME: "pfe20243"
+#   IMAGE_NAME: "fast-api-test-project"
+#   DOCKER_TAG: "latest"
+
+# build:
+#   stage: build
+#   image: docker:19.03.12
+#   services:
+#     - docker:19.03.12-dind
+#   before_script:
+#     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+#   script:
+#     - docker build -t "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG" .
+#     - docker push "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG"
+#   tags:
+#     - docker-runner
+
+# deploy:
+#   stage: deploy
+#   image: docker:latest
+#   services:
+#     - docker:dind
+#   before_script:
+#     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+#     - docker-compose -f docker-compose.yml down
+#   script:
+#     - docker-compose -f docker-compose.yml up -d
+#   tags:
+#     - docker-runner
