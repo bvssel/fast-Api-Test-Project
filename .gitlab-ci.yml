@@ -26,6 +26,3 @@ deploy:
     - docker-compose -f docker-compose.yml up -d
   tags:
     - docker-runner
-
-
-ssh-keygen -t rsa -b 4096 -C "rachedwassim.bassel@effyis-partners.ma"
