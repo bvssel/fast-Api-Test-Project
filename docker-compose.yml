@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    image: registry.gitlab.com/pfe20243/fast-api-test-project
+    image: $CONTAINER_TEST_IMAGE
     container_name: app
     ports:
       - 8082:8000
