@@ -5,7 +5,7 @@ services:
     image:  registry.gitlab.com/pfe20243/fast-api-test-project:latest
     container_name: app
     ports:
-      - 8030:8000
+      - 8040:8000
   nginx:
     image: nginx:latest
     container_name: nginx
