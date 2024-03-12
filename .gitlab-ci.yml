@@ -31,3 +31,4 @@ deploy:
     - ssh root@192.168.1.131 "docker-compose -f /root/wassim/training/myprojectfastapi/fast-Api-Test-Project/docker-compose.yml up -d"
   tags:
     - ssh-runner-b
+    # wwefwef
