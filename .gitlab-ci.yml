@@ -12,7 +12,7 @@ test:
 
 # stages:
 #   - build
-#   - deploy
+#   - deploywwww
 
 # variables:
 #   PROJECT_NAME: "pfe20243"
