@@ -16,7 +16,7 @@ test:
 
 # variables:
 #   PROJECT_NAME: "pfe20243"
-#   IMAGE_NAME: "fast-api-test-project"
+#   IMAGE_NAME: "fast-api-test-project"ss
 #   DOCKER_TAG: "latest"
 
 # build:
