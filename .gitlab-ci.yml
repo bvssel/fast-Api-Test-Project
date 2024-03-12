@@ -7,8 +7,7 @@ test:
     - echo "Testing SSH connection"
     - ssh root@192.168.1.131 "echo 'SSH connection successful'"
   tags:
-    - ssh-runner-bvssel
-
+    - ssh-runner-b
 
 
 # stages:
