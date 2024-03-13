@@ -2,8 +2,9 @@ version: "3.7"
 
 networks:
   proxiable:
+    external: true
     name: proxiable
-    
+
 services:
   app:
     image: registry.gitlab.com/pfe20243/fast-api-test-project:latest
