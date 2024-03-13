@@ -6,6 +6,9 @@ services:
     container_name: app
     ports:
       - 8001:8000
+    networks:
+      - proxiable
+
   # nginx:
   #   image: nginx:latest
   #   container_name: nginx
