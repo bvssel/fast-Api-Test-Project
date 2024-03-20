@@ -6,7 +6,7 @@ from app.api import api
 
 import logging
 
-logging.basicConfig(filename='app.log', level=logging.INFO)
+logging.basicConfig(filename='app.log')
 
 app = FastAPI()
 
