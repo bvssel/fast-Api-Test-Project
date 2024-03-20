@@ -15,7 +15,7 @@ app = FastAPI()
 @app.get("/")
 def root():
     logging.info('Hello, World!')
-    return {"message": "Fast API in Python V2 UPDAATED"}
+    return {"message": "Fast API in Python V2 UPDAATED PRO MAXX"}
 
 
 @app.get("/user")
