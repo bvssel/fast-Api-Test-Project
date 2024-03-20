@@ -10,7 +10,7 @@ services:
     labels:
       filebeat: "true"
     ports:
-      - "8001:8000"  # Port shouldnt be exposed
+      - "8001:8000"  # Port shouldnt be exposed here
     networks:
       - mynetwork
 
