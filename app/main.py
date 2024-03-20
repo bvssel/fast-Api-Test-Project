@@ -4,12 +4,17 @@ from starlette.responses import Response
 from app.db.models import UserAnswer
 from app.api import api
 
+import logging
+
+logging.basicConfig(filename='app.log', level=logging.INFO)
+
 app = FastAPI()
 
 
 @app.get("/")
 def root():
-    return {"message": "Fast API in Python"}
+    logging.info('Hello, World!')
+    return {"message": "Fast API in Python V2 UPDAATED"}
 
 
 @app.get("/user")
