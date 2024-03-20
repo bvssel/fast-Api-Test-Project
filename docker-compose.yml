@@ -10,7 +10,9 @@ services:
     labels:
       filebeat: "true"
     ports:
-      - "8001:8000"  # Port shouldnt be exposeddd
+      - "8001:8000"
+    volumes:
+      - ./logs:/app
     networks:
       - mynetwork
 

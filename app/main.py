@@ -1,12 +1,13 @@
+import logging
+import logging.config
 from fastapi import FastAPI, HTTPException
 from starlette.responses import Response
 
 from app.db.models import UserAnswer
 from app.api import api
 
-import logging
 
-logging.basicConfig(filename='app.log')
+logging.config.fileConfig('logging.conf')
 
 app = FastAPI()
 
