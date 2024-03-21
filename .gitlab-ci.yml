@@ -18,7 +18,7 @@ build:
     - docker build -t "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG" .
     - docker push "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG"
   tags:
-    - docker-runner-cb
+    - myrunner
 
 deploy:
   stage: deploy
