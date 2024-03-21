@@ -5,7 +5,7 @@ stages:
 variables:
   PROJECT_NAME: "pfe20243"
   IMAGE_NAME: "fast-api-test-project"
-  DOCKER_TAG: "latest"  # Default tag, can be overridden
+  DOCKER_TAG: "$CI_COMMIT_SHA"  # Use commit SHA as default tag
 
 build:
   stage: build
@@ -15,7 +15,6 @@ build:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   script:
-    - DOCKER_TAG=$(echo "$CI_COMMIT_SHA" | cut -c1-8)  # Use first 8 characters of commit hash as tag
     - docker build -t "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG" .
     - docker push "$CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG"
   tags:
@@ -26,7 +25,7 @@ deploy:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
     - echo "Pulling Docker image from registry..."
-    - ssh root@192.168.1.131 "docker pull registry.gitlab.com/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG"
+    - ssh root@192.168.1.131 "docker pull $CI_REGISTRY/$PROJECT_NAME/$IMAGE_NAME:$DOCKER_TAG"
     - echo "Stopping and removing existing containers..."
     - ssh root@192.168.1.131 "docker-compose -f /root/wassim/training/myprojectfastapi/fast-Api-Test-Project/docker-compose.yml down"
   script:
