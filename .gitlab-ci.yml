@@ -12,6 +12,7 @@ build:
   services:
     - docker:19.03.12-dind
   before_script:
+    - until docker info; do sleep 1; done
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   script:
     - DOCKER_TAG=$(echo "$CI_COMMIT_SHA" | cut -c1-8)  # Use first 8 characters of commit hash as tag
