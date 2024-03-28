@@ -23,6 +23,7 @@ build:
     - myrunner
 
 sonarqube-check:
+  stage: scan_code
   image: 
     name: sonarsource/sonar-scanner-cli:latest
     entrypoint: [""]
